@@ -218,7 +218,7 @@ def neighborhood_inversion_search(
         cost1 = distances[ia][ja] + distances[ib][jb]
         delta_cost = cost1 - cost0
 
-        if delta_cost <= best_delta_cost:
+        if delta_cost < best_delta_cost:
             best_delta_cost = delta_cost
             best_i = i
             best_j = j
