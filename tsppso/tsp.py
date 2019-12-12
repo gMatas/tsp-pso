@@ -78,16 +78,14 @@ def pso_minimize(
 
     global_solution_index = solutions.index(min(solutions))
     global_solution = copy_solution(solutions[global_solution_index])
-    no_improv_count = 0
 
     counter = 0
 
-    while n > 0 and no_improv_count < max_no_improv1:
+    while n > 0:
         # print("i:", counter, "seq:", global_solution.sequence, "cost: ", global_solution.cost)
         print('i:', counter, 'cost:', global_solution.cost)
         counter += 1
 
-        global_improved = False
         for i, solution in enumerate(solutions):
             # Define Solution particles movement.
             velocity = define_velocity([p1, p2, p3], rng)
@@ -104,16 +102,8 @@ def pso_minimize(
                 solution.best_sequence = solution.sequence
                 solution.best_cost = solution.cost
 
-                # Update global best swarm particle.
-                if solution.cost < global_solution.cost:
-                    global_solution_index = i
-                    global_improved = True
-
-        if global_improved:
-            copy_solution_to(solutions[global_solution_index], global_solution)
-            no_improv_count = 0
-        else:
-            no_improv_count += 1
+        global_solution_index = solutions.index(min(solutions))
+        copy_solution_to(solutions[global_solution_index], global_solution)
 
         p1 *= 0.95
         p2 *= 1.01
