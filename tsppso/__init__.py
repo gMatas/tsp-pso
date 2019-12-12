@@ -17,7 +17,7 @@ def berlin52():
     # 7544.365901904087 - 328015
 
     problem = Problem(xy=dataset.positions)
-    optimizer = TSPPSO(100, 100, p1=0.95, p2=0.03, p3=0.02, max_no_improv2=3, rng=rng)
+    optimizer = TSPPSO(100, 100, p1=0.95, p2=0.03, p3=0.02, max_no_improv=3, rng=rng)
     solution = optimizer.minimize(problem)
 
     print()

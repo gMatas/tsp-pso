@@ -18,11 +18,10 @@ class TSPPSO(PSO):
     p1: float = 0.9
     p2: float = 0.05
     p3: float = 0.05
-    max_no_improv1: int = 3
-    max_no_improv2: int = 3
+    max_no_improv: int = 3
     rng: Random = None
 
     def minimize(self, problem: Problem) -> Solution:
         return pso_minimize(
-            self.n, self.poolsize, problem.distances, self.p1, self.p2,
-            self.p3, self.max_no_improv1, self.max_no_improv2, self.rng)
+            self.n, self.poolsize, problem.distances, self.p1, 
+            self.p2, self.p3, self.max_no_improv, self.rng)

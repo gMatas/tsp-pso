@@ -59,8 +59,7 @@ def pso_minimize(
         p1: float = 0.9,
         p2: float = 0.05,
         p3: float = 0.05,
-        max_no_improv1: int = 3,
-        max_no_improv2: int = 3,
+        max_no_improv: int = 3,
         rng: Random = None
 ) -> Solution:
 
@@ -82,7 +81,6 @@ def pso_minimize(
     counter = 0
 
     while n > 0:
-        # print("i:", counter, "seq:", global_solution.sequence, "cost: ", global_solution.cost)
         print('i:', counter, 'cost:', global_solution.cost)
         counter += 1
 
@@ -91,7 +89,7 @@ def pso_minimize(
             velocity = define_velocity([p1, p2, p3], rng)
 
             if velocity == 0:  # move independently on it's own.
-                move_solution_independently(solution, distances, max_no_improv2, rng)
+                move_solution_independently(solution, distances, max_no_improv, rng)
             elif velocity == 1:  # move toward personal best position.
                 move_solution_to_personal_best(solution, distances)
             else:  # move toward swarm best position.
